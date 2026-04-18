@@ -783,3 +783,21 @@ body {
 body {
     padding-bottom: 70px;
 }
+
+/* ÍCONES LUCIDE */
+.nav-item svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+}
+
+/* ATIVO (mais bonito) */
+.nav-item.active {
+    color: #22C55E;
+}
+
+.nav-item.active svg {
+    stroke: #22C55E;
+}
+
+

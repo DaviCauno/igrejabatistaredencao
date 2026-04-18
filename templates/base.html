@@ -30,25 +30,32 @@
 </div>
 
 <div class="bottom-nav">
+
     <a href="{{ url_for('home') }}" class="nav-item">
-        🏠
+        <i data-lucide="home"></i>
         <span>Início</span>
     </a>
 
     <a href="{{ url_for('dashboard') }}" class="nav-item">
-        📊
+        <i data-lucide="bar-chart-3"></i>
         <span>Dashboard</span>
     </a>
 
     <a href="{{ url_for('movimentacoes') }}" class="nav-item">
-        💰
+        <i data-lucide="wallet"></i>
         <span>Mov.</span>
     </a>
 
     <a href="/membros" class="nav-item">
-        👥
+        <i data-lucide="users"></i>
         <span>Membros</span>
     </a>
+
 </div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
+
 </body>
 </html>

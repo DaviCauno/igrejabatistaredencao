@@ -10,5 +10,7 @@ diretoria@ibr.com.br
 
 
 C:\Users\Davi Cauno\Desktop\Igreja_Financeiro>
+git init
+git add .
 git commit -m "corrigindo RESPONSIVIDADE"
 git push
