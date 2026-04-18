@@ -82,6 +82,7 @@ class Usuario(db.Model):
 # ---------------- ROTAS ----------------
 
 @app.route("/")
+@app.route("/dashboard")
 def dashboard():
     if not session.get("logado"):
         return redirect(url_for("login"))
@@ -103,7 +104,7 @@ def dashboard():
         saldo=saldo
     )
 
-
+@app.route("/")
 @app.route("/movimentacoes")
 def movimentacoes():
     if not session.get("logado"):
@@ -196,6 +197,7 @@ def novo_membro():
 
 
 #----HOME----
+@app.route("/")
 @app.route("/home")
 def home():
     if not session.get("logado"):
