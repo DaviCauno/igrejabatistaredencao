@@ -29,6 +29,26 @@
 {% endif %}
 </div>
 
+<div class="bottom-nav">
+    <a href="{{ url_for('home') }}" class="nav-item">
+        🏠
+        <span>Início</span>
+    </a>
 
+    <a href="{{ url_for('dashboard') }}" class="nav-item">
+        📊
+        <span>Dashboard</span>
+    </a>
+
+    <a href="{{ url_for('movimentacoes') }}" class="nav-item">
+        💰
+        <span>Mov.</span>
+    </a>
+
+    <a href="/membros" class="nav-item">
+        👥
+        <span>Membros</span>
+    </a>
+</div>
 </body>
 </html>

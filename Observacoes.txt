@@ -7,3 +7,8 @@ Catitu18@red4488
 
 diretoria@ibr.com.br
 12345678
+
+
+C:\Users\Davi Cauno\Desktop\Igreja_Financeiro>
+git commit -m "corrigindo RESPONSIVIDADE"
+git push
