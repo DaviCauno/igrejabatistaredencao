@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="title">Dashboard Financeiro</h2>
+
+<div class="card-modern">
+
+    <!-- ENTRADAS -->
+    <div style="margin-bottom: 15px;">
+        <div style="font-size: 14px; opacity: 0.7;"><br>
+            Entradas</div>
+        <div class="entrada" style="font-size: 20px; font-weight: 700;">
+          R$ {{ "{:,.2f}".format(entradas).replace(",", "X").replace(".", ",").replace("X", ".") }}
+        </div>
+    </div>
+
+    <!-- SAÍDAS -->
+    <div style="margin-bottom: 20px;">
+        <div style="font-size: 14px; opacity: 0.7;">Saídas</div>
+        <div class="saida" style="font-size: 20px; font-weight: 700;">
+            R$ {{ "{:,.2f}".format(saidas).replace(",", "X").replace(".", ",").replace("X", ".") }}
+        </div>
+    </div>
+
+    <!-- LINHA SEPARADORA -->
+    <hr style="border-color: rgba(255,255,255,0.1); margin: 20px 0;">
+
+    <!-- SALDO (DESTAQUE FINAL) -->
+    <div>
+        <div style="font-size: 14px; opacity: 0.7;">Saldo</div>
+        <div style="font-size: 34px; font-weight: 800; color: #7C3AED;">
+         R$ {{ "{:,.2f}".format(saldo).replace(",", "X").replace(".", ",").replace("X", ".") }}
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- BOTÃO MAIS EMBAIXO -->
+<div style="margin-top: 35px;">
+  <div class="btn-group">
+    <a href="/movimentacoes" class="btn btn-custom">📄 Ver movimentações</a>
+    <a href="/analise" class="btn btn-secondary">📊 Analisar</a>
+</div>
+
+</div>
+<a href="/home" class="btn btn-secondary">Voltar</a>
+
+{% endblock %}

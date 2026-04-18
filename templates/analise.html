@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Análise Financeira</h1>
+
+<form method="GET">
+
+<div class="filtro-data">
+    <div>
+        <label>Data Início<br></br></label>
+        <input type="date" name="data_inicio" class="form-control">
+    </div>
+
+    <div>
+        <label>Data Fim<br></br></label>
+        <input type="date" name="data_fim" class="form-control">
+    </div>
+</div>
+
+    <select name="tipo" id="tipo">
+        <option value="">Todos</option>
+        <option value="entrada">Entrada</option>
+        <option value="saida">Saída</option>
+    </select>
+
+    <div id="categoria-container"></div>
+        <option value=""></option>
+    </select>
+
+<div class="acoes-filtro">
+    <button type="submit" class="btn-filtrar">Filtrar</button>
+    <a href="/analise" class="btn-limpar">Limpar</a>
+</div>
+
+</form>
+
+<br>
+<hr>
+
+<table>
+    <tr>
+        <th>Data</th>
+        <th>Tipo</th>
+        <th>Categoria</th>
+        <th>Valor</th>
+    </tr>
+
+    {% for item in lista %}
+    <tr>
+        <td>{{ item.data }}</td>
+        <td>{{ item.tipo }}</td>
+        <td>{{ item.categoria }}</td>
+        <td>R$ {{ '%.2f'|format(item.valor) }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="/" class="btn btn-secondary">Voltar</a>
+<br>
+<script>
+    const tipoSelect = document.getElementById("tipo");
+    const categoriaContainer = document.getElementById("categoria-container");
+
+    const categorias = {
+        entrada: [
+            "Dízimo",
+            "Oferta",
+            "Doação",
+            "Evento",
+            "Oferta Especial",
+            "Rend Conta"
+        ],
+        saida: [
+            "Aluguel",
+            "Contas",
+            "Manutenção",
+            "ADM",
+            "Limpeza",
+            "Ajuda Ministerial",
+            "Banco",
+            "Social",
+            "Compra"
+        ]
+    };
+
+    function atualizarCategorias() {
+        const tipo = tipoSelect.value;
+
+        categoriaContainer.innerHTML = "";
+
+        // Se não escolher tipo, não mostra nada
+        if (!tipo || !categorias[tipo]) return;
+
+        categorias[tipo].forEach(cat => {
+         const label = document.createElement("label");
+label.classList.add("tag-categoria", tipo); // 👈 ESSA LINHA É A CHAVE
+
+
+            const input = document.createElement("input");
+            input.type = "checkbox";
+            input.name = "categoria";
+            input.value = cat;
+
+            const span = document.createElement("span");
+            span.textContent = cat;
+
+            label.appendChild(input);
+            label.appendChild(span);
+
+            categoriaContainer.appendChild(label);
+        });
+    }
+
+    tipoSelect.addEventListener("change", atualizarCategorias);
+
+    // carrega ao abrir
+    atualizarCategorias();
+</script>
+
+{% endblock %}

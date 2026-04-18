@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+  
+
+    <!-- BOTÃO ABRIR CADASTRO -->
+    <button onclick="toggleCadastro()" class="btn">
+        ➕ Cadastrar Membro
+    </button>
+
+    <!-- FORMULÁRIO (INICIA OCULTO) -->
+    <div class="card" id="formCadastro" style="display:none; margin-top:20px;">
+        <h3>Novo Membro</h3>
+
+        <form method="POST" action="/membros/novo" class="form-grid">
+
+            <input type="text" name="nome_completo" placeholder="Nome completo" required>
+            <input type="number" name="idade" placeholder="Idade">
+
+            <input type="date" name="data_nascimento">
+            <input type="date" name="aniversario">
+
+            <input type="text" name="mes_aniversario" placeholder="Mês aniversário">
+            <input type="text" name="celular" placeholder="Celular">
+
+            <input type="text" name="endereco" placeholder="Endereço">
+            <input type="text" name="bairro" placeholder="Bairro">
+            <input type="text" name="cidade" placeholder="Cidade">
+
+            <input type="text" name="membresia" placeholder="Membresia">
+
+            <div class="checks">
+                <label><input type="checkbox" name="batizado"> Batizado</label>
+                <label><input type="checkbox" name="alergia"> Alergia</label>
+                <label><input type="checkbox" name="casamento"> Casado</label>
+            </div>
+
+            <input type="date" name="data_casamento">
+
+            <textarea name="diagnostico" placeholder="Diagnóstico"></textarea>
+
+            <button type="submit" class="btn">Salvar Membro</button>
+
+        </form>
+    </div>
+
+    <!-- LISTA -->
+    <div class="card" style="margin-top:20px;">
+        <h3>Lista de Membros</h3>
+
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Celular</th>
+                    <th>Cidade</th>
+                    <th>Data de Nascimento</th>
+                    <th>Aniversário</th>
+                    <th>Endereço</th>
+                    <th>Membresia</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for m in lista %}
+                <tr>
+                    <td>{{ m.nome_completo }}</td>
+                    <td>{{ m.celular or '-' }}</td>
+                    <td>{{ m.cidade or '-' }}</td>
+                    <td>{{ m.data_nascimento or '-' }}</td>
+                    <td>{{ m.aniversario or '-' }}</td>
+                    <td>{{ m.endereco or '-' }}</td>
+                    <td>{{ m.membresia or '-' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+function toggleCadastro() {
+    const form = document.getElementById("formCadastro");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+}
+</script>
+<a href="/home" class="btn btn-secondary">Voltar</a>
+{% endblock %}

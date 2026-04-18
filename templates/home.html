@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <h2 class="title">Bem-vindo, {{ session.usuario }}</h2>
+
+    <div class="grid-home">
+
+        <a href="{{ url_for('dashboard') }}" class="card-home">
+            <div class="icon">📊</div>
+            <div class="text">
+                <h3>Financeiro</h3>
+                <p>Resumo financeiro da igreja</p>
+            </div>
+        </a>
+
+        <a href="/membros" class="card-home">
+            <div class="icon">⛪</div>
+            <div class="text">
+                <h3>Membros</h3>
+                <p>Cadastro e gestão</p>
+            </div>
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

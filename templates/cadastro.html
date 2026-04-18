@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="login-container">
+
+    <div class="login-box">
+
+      
+        <h2>Criar Conta</h2>
+        <p class="subtitulo">Cadastre um novo usuário</p>
+
+{% if erro %}
+    <div class="alerta-erro">
+        {{ erro }}
+    </div>
+{% endif %}
+
+        <form method="POST">
+
+            <input type="text" name="nome" placeholder="Nome completo" required>
+
+            <input type="email" name="email" placeholder="Email" required>
+
+            <div class="input-group">
+                <input type="password" name="senha" placeholder="Senha" id="senha" required>
+                <span class="toggle-senha" onclick="toggleSenha()">👁</span>
+            </div>
+
+<input type="password" name="palavra_chave" placeholder="Palavra-chave de cadastro" required>
+
+            <button class="btn-login">Cadastrar</button>
+
+        </form>
+
+        <a href="/login" class="btn-cadastro">Já tenho conta</a>
+
+    </div>
+
+</div>
+
+<script>
+function toggleSenha() {
+    const input = document.getElementById("senha");
+    input.type = input.type === "password" ? "text" : "password";
+}
+</script>
+
+{% endblock %}
